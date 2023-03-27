@@ -8,11 +8,14 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MixRepository
 {
-    private HttpClientInterface $httpClient;
-    private CacheInterface $cache;
-    public function __construct(HttpClientInterface $httpClient, CacheInterface $cache){
-        $this->httpClient = $httpClient;
-        $this->cache = $cache;
+
+    //dependency injection :
+    public function __construct(
+        private HttpClientInterface $httpClient,
+        private CacheInterface $cache,
+        private bool $isDebug //in services.yaml we bind the 'kernel.debug' parameter value to it
+    ){
+
     }
     public function findAll(): array{
         return $this->cache->get('mixes_data', function(CacheItemInterface $cacheItem) {

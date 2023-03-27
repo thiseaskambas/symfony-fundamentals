@@ -21,6 +21,5 @@ framework:
             #my.dedicated.cache: null
 
 when@dev:
-    framework:
-        cache:
-            app: cache.adapter.array
+    parameters:
+        cache_adapter: 'cache.adapter.array'
