@@ -5,6 +5,7 @@ namespace App\Service;
 use Psr\Cache\CacheItemInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class MixRepository
 {
@@ -13,6 +14,7 @@ class MixRepository
     public function __construct(
         private HttpClientInterface $httpClient,
         private CacheInterface $cache,
+        #[Autowire('%kernel.debug%')]
         private bool $isDebug //in services.yaml we bind the 'kernel.debug' parameter value to it
     ){
 
