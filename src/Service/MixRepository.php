@@ -32,6 +32,7 @@ class MixRepository
          * dd($output);
          * */
 
+
         return $this->cache->get('mixes_data', function(CacheItemInterface $cacheItem) {
             $cacheItem->expiresAfter(5);
             $response = $this->githubContentClient->request('GET', '/SymfonyCasts/vinyl-mixes/main/mixes.json');
